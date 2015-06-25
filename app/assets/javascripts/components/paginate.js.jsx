@@ -4,18 +4,24 @@ var Paginate = React.createClass({
 
   getInitialState: function () {
       return {
-          isFavorite: false
+          page: 1;
       };
   },
 
   render: function () {
-    return (
-      <nav>
-        <NavLink name='Home' url='/' />
-        <NavLink name='Posts' url='/posts' />
-        <NavLink name='About' url='/about' />
-      </nav>
-    );
+    for (var i = 0; i < this.props.data.length; i++) {
+      return (
+        <div class="row">
+          <div class="col-sm-1"></div>
+          <div class="col-sm-11">
+            <h3>{ this.props.data[i].name }</h3>
+            <NavLink name='Show' url={ '/' + this.props.type } />
+            <NavLink name='Edit' url={ '/' + this.props.type } />
+            <NavLink name='Destroy' url={ '/' + this.props.type } />
+          </div>
+        </div>
+      );
+    };
   }
 });
 
