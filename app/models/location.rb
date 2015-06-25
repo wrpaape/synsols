@@ -1,5 +1,5 @@
 class Location < ActiveRecord::Base
-  has_many :employees
-  has_many :courses
+  has_many :employees, dependent: :destroy
+  has_many :courses, dependent: :destroy
   belongs_to :company
 end
