@@ -6,7 +6,7 @@ class CreateCourses < ActiveRecord::Migration
       t.integer :enrollment_cap
       t.belongs_to :company, index: true, foreign_key: true
       t.belongs_to :location, index: true, foreign_key: true
-      t.integer :participants_count
+      t.integer :employees_count, default: 0
 
       t.timestamps null: false
     end
