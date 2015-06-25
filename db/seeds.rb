@@ -17,6 +17,14 @@
                                  job_title: job_title,
                                  hire_date: hire_date,
                                 company_id: company.id)
+
     end
+  end
+end
+
+Course.all.each do |course|
+  students = course.location.employees.sample(rand(course.enrollment_cap))
+  students.each do |student|
+    course.participants.create(employee_id: student.id)
   end
 end
