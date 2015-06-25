@@ -40,6 +40,23 @@
   </div>
 <% end %>
 
+<div class="row">
+  <div class="col-sm-6">
+    <h3><strong>Employees</strong></h3>
+  </div>
+</div>
+<% @company.employees.each do |employee| %>
+  <div class="row">
+    <div class="col-sm-1"></div>
+    <div class="col-sm-5">
+      <%= "#{employee.first_name} #{employee.last_name}" %>
+      <%= link_to 'Show', employee %>
+      <%= link_to 'Edit', edit_employee_path(employee) %>
+      <%= link_to 'Destroy', employee, method: :delete, data: { confirm: 'Are you sure?' } %>
+    </div>
+  </div>
+<% end %>
+
 
 <%= link_to 'Edit', edit_company_path(@company) %> |
 <%= link_to 'Back', companies_path %>

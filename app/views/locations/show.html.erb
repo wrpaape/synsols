@@ -1,14 +1,61 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @location.name %>
-</p>
+<div class="row">
+  <div class="col-sm-12">
+    <h1><strong><%= @location.name %></strong></h1>
+  </div>
+</div>
 
-<p>
-  <strong>Company:</strong>
-  <%= @location.company.name %>
-</p>
+<div class="row">
+  <div class="col-sm-6">
+    <h3><strong>Parent Company</strong></h3>
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-1"></div>
+  <div class="col-sm-5">
+    <% company = @location.company %>
+    <%= company.name %>
+    <%= link_to 'Show', company %>
+    <%= link_to 'Edit', edit_company_path(company) %>
+    <%= link_to 'Destroy', company, method: :delete, data: { confirm: 'Are you sure?' } %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-12">
+    <h3><strong>Courses</strong></h3>
+  </div>
+</div>
+<% @location.courses.each do |course| %>
+  <div class="row">
+    <div class="col-sm-1"></div>
+    <div class="col-sm-11">
+      <%= course.title %>
+      <%= link_to 'Show', course %>
+      <%= link_to 'Edit', edit_course_path(course) %>
+      <%= link_to 'Destroy', course, method: :delete, data: { confirm: 'Are you sure?' } %>
+    </div>
+  </div>
+<% end %>
+
+<div class="row">
+  <div class="col-sm-6">
+    <h3><strong>Employees</strong></h3>
+  </div>
+</div>
+<% @location.employees.each do |employee| %>
+  <div class="row">
+    <div class="col-sm-1"></div>
+    <div class="col-sm-5">
+      <%= "#{employee.first_name} #{employee.last_name}" %>
+      <%= link_to 'Show', employee %>
+      <%= link_to 'Edit', edit_employee_path(employee) %>
+      <%= link_to 'Destroy', employee, method: :delete, data: { confirm: 'Are you sure?' } %>
+    </div>
+  </div>
+<% end %>
+
 
 <%= link_to 'Edit', edit_location_path(@location) %> |
 <%= link_to 'Back', locations_path %>
