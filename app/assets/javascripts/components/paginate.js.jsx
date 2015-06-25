@@ -32,7 +32,7 @@ var Paginate = React.createClass({
         <div>
           <div>{rows}</div>
           <div className='row'>
-            <div onClick={ this.clicked.bind(this, 1)  } className='col-sm-2 btn btn-default next-prev'>Next Page</div>
+            <div onClick={ this.clicked.bind(this, 1)  } className='col-sm-2 btn btn-default next-prev'>Next</div>
           </div>
         </div>
       )
@@ -41,8 +41,8 @@ var Paginate = React.createClass({
         <div>
           <div>{rows}</div>
           <div className='row'>
-            <div onClick={ this.clicked.bind(this, -1)  } className='col-sm-2 btn btn-default next-prev'>Prev Page</div>
-            <div onClick={ this.clicked.bind(this, 1)  } className='col-sm-2 btn btn-default next-prev'>Next Page</div>
+            <div onClick={ this.clicked.bind(this, -1)  } className='col-sm-2 btn btn-default next-prev'>Prev</div>
+            <div onClick={ this.clicked.bind(this, 1)  } className='col-sm-2 btn btn-default next-prev'>Next</div>
           </div>
         </div>
       )
@@ -51,7 +51,7 @@ var Paginate = React.createClass({
         <div>
           <div>{rows}</div>
           <div className='row'>
-            <div onClick={ this.clicked.bind(this, -1) } className='col-sm-2 btn btn-default next-prev'>Prev Page</div>
+            <div onClick={ this.clicked.bind(this, -1) } className='col-sm-2 btn btn-default next-prev'>Prev</div>
           </div>
         </div>
       )
@@ -74,7 +74,7 @@ var DataRow = React.createClass({
       <div className='row'>
         <div className='col-sm-1'></div>
         <div className='col-sm-11'>
-          <h3>{ this.props.elem.name }</h3>
+          <h4>{ this.props.elem.name }</h4>
           <NavLink name='Show' url={ '/' + this.props.type + '/' + this.props.elem.id } method='GET' parent={ this } />
           <NavLink name='Edit' url={ '/' + this.props.type + '/' + this.props.elem.id + '/edit' } method='GET' parent={ this } />
           <NavLink name='Destroy' url={ '/' + this.props.type + '/' + this.props.elem.id } method='DELETE' parent={ this } />
