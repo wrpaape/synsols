@@ -6,19 +6,7 @@
   </div>
 </div>
 
-// <%= react_component("Paginate", { data: @companies, type: "companies" }) %>
-
-<% @companies.each do |company| %>
-  <div class="row">
-    <div class="col-sm-1"></div>
-    <div class="col-sm-11">
-      <h3><%= company.name %></h3>
-      <%= link_to 'Show', company %>
-      <%= link_to 'Edit', edit_company_path(company) %>
-      <%= link_to 'Destroy', company, method: :delete, data: { confirm: 'Are you sure?' } %>
-    </div>
-  </div>
-<% end %>
+<%= react_component("Paginate", { data: @companies, type: "companies" }) %>
 
 <br>
 
