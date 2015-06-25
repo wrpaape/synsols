@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :employees
   resources :locations
   resources :companies
+  get 'companies/:id/delete' => 'companies#destroy'
   root 'companies#index'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
