@@ -4,8 +4,9 @@
     location = company.locations.create(name: Faker::Address.city)
     rand(1..3).times do
       location.courses.create(name: Faker::Company.catch_phrase,
-                        description: Faker::Lorem.paragraph,
-                     enrollment_cap: Array(20..100).sample)
+                       description: Faker::Lorem.paragraph,
+                    enrollment_cap: rand(20..100),
+                        company_id: location.company.id)
     end
     rand(1..100).times do
       location.employees.create(first_name: Faker::Name.first_name,

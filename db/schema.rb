@@ -29,12 +29,14 @@ ActiveRecord::Schema.define(version: 20150625082214) do
     t.string   "name",                               null: false
     t.text     "description",        default: "N/A"
     t.integer  "enrollment_cap"
+    t.integer  "company_id"
     t.integer  "location_id"
     t.integer  "participants_count"
     t.datetime "created_at",                         null: false
     t.datetime "updated_at",                         null: false
   end
 
+  add_index "courses", ["company_id"], name: "index_courses_on_company_id", using: :btree
   add_index "courses", ["location_id"], name: "index_courses_on_location_id", using: :btree
 
   create_table "employees", force: :cascade do |t|
@@ -42,8 +44,8 @@ ActiveRecord::Schema.define(version: 20150625082214) do
     t.string   "last_name",          null: false
     t.string   "job_title"
     t.date     "hire_date"
-    t.integer  "location_id"
     t.integer  "company_id"
+    t.integer  "location_id"
     t.integer  "participants_count"
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
@@ -73,6 +75,7 @@ ActiveRecord::Schema.define(version: 20150625082214) do
   add_index "participants", ["course_id"], name: "index_participants_on_course_id", using: :btree
   add_index "participants", ["employee_id"], name: "index_participants_on_employee_id", using: :btree
 
+  add_foreign_key "courses", "companies"
   add_foreign_key "courses", "locations"
   add_foreign_key "employees", "companies"
   add_foreign_key "employees", "locations"
