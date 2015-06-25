@@ -8,24 +8,57 @@ var Paginate = React.createClass({
   },
   render: function () {
     var rows = [];
-  // switch (this.state.page) {
-  //   case 1:
-  //     var i_0 = ;
-  //     var i_f = ;
-  //     break;
-  //   case 2:
-  //     var i_0 = ;
-  //     var i_f = ;
-  //     break;
-  //   case 3:
-  //     var i_0 = ;
-  //     var i_f = ;
-  //     break;
-  // }
-    for (var i = 0; i < this.props.data.length; i++) {
+    var i_0 = (this.state.page - 1) * 10;
+    var i_f = 0;
+
+    if (this.props.data.length < (this.state.page * 10)) {
+      i_f = this.props.data.length;
+    } else {
+      i_f = i_0 + 10;
+    }
+
+    for (var i = i_0; i < i_f; i++) {
       rows.push(<DataRow elem={ this.props.data[i] } type={ this.props.type } />);
     }
-    return (<div>{rows}</div>)
+
+    if (this.state.page === 1 && i_f === this.props.data.length) {
+      return (
+        <div>
+          <div>{rows}</div>
+        </div>
+      )
+    } else if (this.state.page === 1 && i_f < this.props.data.length) {
+      return (
+        <div>
+          <div>{rows}</div>
+          <div className='row'>
+            <div onClick={ this.clicked.bind(this, 1)  } className='col-sm-2 btn btn-default next-prev'>Next Page</div>
+          </div>
+        </div>
+      )
+    } else if (i_f < this.props.data.length) {
+      return (
+        <div>
+          <div>{rows}</div>
+          <div className='row'>
+            <div onClick={ this.clicked.bind(this, -1)  } className='col-sm-2 btn btn-default next-prev'>Prev Page</div>
+            <div onClick={ this.clicked.bind(this, 1)  } className='col-sm-2 btn btn-default next-prev'>Next Page</div>
+          </div>
+        </div>
+      )
+    } else {
+      return (
+        <div>
+          <div>{rows}</div>
+          <div className='row'>
+            <div onClick={ this.clicked.bind(this, -1) } className='col-sm-2 btn btn-default next-prev'>Prev Page</div>
+          </div>
+        </div>
+      )
+    }
+  },
+  clicked: function (val) {
+    this.setState({ page: this.state.page + val });
   }
 });
 
