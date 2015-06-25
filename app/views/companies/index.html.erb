@@ -6,6 +6,8 @@
   </div>
 </div>
 
+<%= react_component("Paginate", { data: @companies, type: "companies"  }) %>
+
 <% @companies.each do |company| %>
   <div class="row">
     <div class="col-sm-1"></div>

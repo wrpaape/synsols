@@ -7,7 +7,7 @@
                         description: Faker::Lorem.paragraph,
                      enrollment_cap: Array(20..100).sample)
     end
-    rand(1..25).times do
+    rand(1..100).times do
       location.employees.create(first_name: Faker::Name.first_name,
                                  last_name: Faker::Name.last_name,
                                  job_title: Faker::Name.title,
