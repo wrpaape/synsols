@@ -7,38 +7,19 @@
 </div>
 
 <div class="row">
-  <div class="col-sm-6">
+  <div class="col-sm-12">
     <h3><strong>Locations</strong></h3>
   </div>
 </div>
-<% @company.locations.each do |location| %>
-  <div class="row">
-    <div class="col-sm-1"></div>
-    <div class="col-sm-5">
-      <%= location.name %>
-      <%= link_to 'Show', location %>
-      <%= link_to 'Edit', edit_location_path(location) %>
-      <%= link_to 'Destroy', location, method: :delete, data: { confirm: 'Are you sure?' } %>
-    </div>
-  </div>
-<% end %>
+<%= react_component("Paginate", { data: @company.locations, type: "locations" }) %>
+
 
 <div class="row">
   <div class="col-sm-12">
     <h3><strong>Courses</strong></h3>
   </div>
 </div>
-<% @company.courses.each do |course| %>
-  <div class="row">
-    <div class="col-sm-1"></div>
-    <div class="col-sm-11">
-      <%= course.title %>
-      <%= link_to 'Show', course %>
-      <%= link_to 'Edit', edit_course_path(course) %>
-      <%= link_to 'Destroy', course, method: :delete, data: { confirm: 'Are you sure?' } %>
-    </div>
-  </div>
-<% end %>
+<%= react_component("Paginate", { data: @company.courses, type: "courses" }) %>
 
 <div class="row">
   <div class="col-sm-6">

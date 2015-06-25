@@ -3,7 +3,7 @@
   rand(1..5).times do
     location = company.locations.create(name: Faker::Address.city)
     rand(1..3).times do
-      location.courses.create(title: Faker::Company.catch_phrase,
+      location.courses.create(name: Faker::Company.catch_phrase,
                         description: Faker::Lorem.paragraph,
                      enrollment_cap: Array(20..100).sample)
     end

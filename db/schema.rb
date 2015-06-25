@@ -17,41 +17,48 @@ ActiveRecord::Schema.define(version: 20150625082214) do
   enable_extension "plpgsql"
 
   create_table "companies", force: :cascade do |t|
-    t.string   "name",       null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "name",            null: false
+    t.integer  "locations_count"
+    t.integer  "employees_count"
+    t.integer  "courses_count"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
   end
 
   create_table "courses", force: :cascade do |t|
-    t.string   "title",                          null: false
-    t.text     "description",    default: "N/A"
+    t.string   "name",                               null: false
+    t.text     "description",        default: "N/A"
     t.integer  "enrollment_cap"
     t.integer  "location_id"
-    t.datetime "created_at",                     null: false
-    t.datetime "updated_at",                     null: false
+    t.integer  "participants_count"
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
   end
 
   add_index "courses", ["location_id"], name: "index_courses_on_location_id", using: :btree
 
   create_table "employees", force: :cascade do |t|
-    t.string   "first_name",  null: false
-    t.string   "last_name",   null: false
+    t.string   "first_name",         null: false
+    t.string   "last_name",          null: false
     t.string   "job_title"
     t.date     "hire_date"
     t.integer  "location_id"
     t.integer  "company_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.integer  "participants_count"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
   end
 
   add_index "employees", ["company_id"], name: "index_employees_on_company_id", using: :btree
   add_index "employees", ["location_id"], name: "index_employees_on_location_id", using: :btree
 
   create_table "locations", force: :cascade do |t|
-    t.string   "name",       null: false
+    t.string   "name",            null: false
     t.integer  "company_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "courses_count"
+    t.integer  "employees_count"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
   end
 
   add_index "locations", ["company_id"], name: "index_locations_on_company_id", using: :btree
