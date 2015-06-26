@@ -20,19 +20,17 @@
 
 <div class="row">
   <div class="col-sm-6">
+    <h3><strong>Company</strong></h3>
+  </div>
+</div>
+<%= react_component("Paginate", { data: [@course.company], type: "companies" }) %>
+
+<div class="row">
+  <div class="col-sm-6">
     <h3><strong>Location</strong></h3>
   </div>
 </div>
-<div class="row">
-  <div class="col-sm-1"></div>
-  <div class="col-sm-5">
-    <% location = @course.location %>
-    <%= location.name %>
-    <%= link_to 'Show', location %>
-    <%= link_to 'Edit', edit_location_path(location) %>
-    <%= link_to 'Destroy', location, method: :delete, data: { confirm: 'Are you sure?' } %>
-  </div>
-</div>
+<%= react_component("Paginate", { data: [@course.location], type: "locations" }) %>
 
 
 <div class="row">
@@ -40,18 +38,9 @@
     <h3><strong>Employees Enrolled</strong></h3>
   </div>
 </div>
-<% @course.employees.each do |employee| %>
-  <div class="row">
-    <div class="col-sm-1"></div>
-    <div class="col-sm-11">
-      <%= "#{employee.first_name} #{employee.last_name}" %>
-      <%= link_to 'Show', employee %>
-      <%= link_to 'Edit', edit_employee_path(employee) %>
-      <%= link_to 'Destroy', employee, method: :delete, data: { confirm: 'Are you sure?' } %>
-    </div>
-  </div>
-<% end %>
+<%= react_component("Paginate", { data: @course.employees, type: "employees" }) %>
 
 
+<br>
 <%= link_to 'Edit', edit_location_path(@course) %> |
 <%= link_to 'Back', locations_path %>
