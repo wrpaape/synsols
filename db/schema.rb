@@ -40,8 +40,7 @@ ActiveRecord::Schema.define(version: 20150625082214) do
   add_index "courses", ["location_id"], name: "index_courses_on_location_id", using: :btree
 
   create_table "employees", force: :cascade do |t|
-    t.string   "first_name",                null: false
-    t.string   "last_name",                 null: false
+    t.string   "name",                      null: false
     t.string   "job_title"
     t.date     "hire_date"
     t.integer  "company_id"

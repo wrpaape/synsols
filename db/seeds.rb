@@ -9,11 +9,10 @@
                         company_id: location.company.id)
     end
     rand(1..100).times do
-      location.employees.create(first_name: Faker::Name.first_name,
-                                 last_name: Faker::Name.last_name,
-                                 job_title: Faker::Name.title,
-                                 hire_date: Faker::Date.between(10.years.ago, 1.day.ago),
-                                company_id: company.id)
+      location.employees.create(name: "#{Faker::Name.first_name} #{Faker::Name.last_name}",
+                           job_title: Faker::Name.title,
+                           hire_date: Faker::Date.between(10.years.ago, 1.day.ago),
+                          company_id: company.id)
 
     end
   end

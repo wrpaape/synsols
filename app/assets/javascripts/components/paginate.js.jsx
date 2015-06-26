@@ -32,6 +32,7 @@ var Paginate = React.createClass({
         <div>
           <div>{rows}</div>
           <div className='row'>
+            <div className='col-sm-2 next-prev'></div>
             <div onClick={ this.clicked.bind(this, 1)  } className='col-sm-2 btn btn-default next-prev'>Next</div>
           </div>
         </div>
